@@ -13,8 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0066CC 0%, #004499 100%);
-            min-height: 100vh;
+            background: #f5f7fa;
             color: #333;
         }
 
@@ -26,6 +25,9 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-left {
@@ -47,6 +49,13 @@
             font-weight: bold;
         }
 
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
         .school-name-header {
             font-size: 18px;
             font-weight: bold;
@@ -60,18 +69,22 @@
             position: relative;
         }
 
-        .connexion-personnel {
+        .connexion-btn {
             background: #0066CC;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             font-size: 14px;
+            font-weight: 500;
             transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .connexion-personnel:hover {
+        .connexion-btn:hover {
             background: #004499;
         }
 
@@ -118,137 +131,264 @@
             background: #f0f0f0;
         }
 
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
+        /* Hero Section */
         .hero {
-            background: white;
-            border-radius: 10px;
-            padding: 50px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            background: #0066CC;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #0066CC 0%, #004499 100%);
             color: white;
-            font-size: 48px;
+            padding: 80px 30px;
+            text-align: center;
         }
 
         .hero h1 {
-            font-size: 36px;
-            color: #0066CC;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 30px;
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
             line-height: 1.6;
         }
 
-        /* Buttons Section */
+        /* Statistiques */
+        .stats-section {
+            background: white;
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+            max-width: 1200px;
+            margin: -30px auto 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0066CC;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #999;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Boutons Principaux */
         .buttons-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-bottom: 40px;
+            margin: 60px 0;
         }
 
-        .btn-card {
+        .btn-card-large {
             background: white;
             border-radius: 10px;
-            padding: 40px;
+            padding: 30px;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .btn-card:hover {
+        .btn-card-large:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .btn-card-icon {
+        .btn-card-large.filled {
+            background: #0066CC;
+            color: white;
+        }
+
+        .btn-card-large.outlined {
+            border: 2px solid #0066CC;
+            color: #0066CC;
+        }
+
+        .btn-card-large-icon {
             font-size: 48px;
             margin-bottom: 20px;
         }
 
-        .btn-card h3 {
-            font-size: 20px;
+        .btn-card-large h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .btn-card-large p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Section À Propos */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 80px 0;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
             color: #0066CC;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
             margin-bottom: 15px;
         }
 
-        .btn-card-button {
-            background: #0066CC;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s ease;
+        .about-image {
             width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            height: 400px;
         }
 
-        .btn-card-button:hover {
-            background: #004499;
+        /* Section Services */
+        .services-section {
+            margin: 80px 0;
         }
 
-        /* Footer / Contact */
-        .footer {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
+        .services-title {
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
-        .footer h3 {
-            color: #0066CC;
-            margin-bottom: 20px;
+        .services-title h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .services-title p {
+            font-size: 16px;
+            color: #999;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #0066CC;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card.colored {
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
             font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Footer/Contact */
+        .contact-section {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 80px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section h3 {
+            color: #0066CC;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 700;
         }
 
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .contact-item {
-            padding: 15px;
+            padding: 20px;
             background: #f9f9f9;
-            border-radius: 5px;
+            border-radius: 8px;
             border-left: 4px solid #0066CC;
         }
 
         .contact-item strong {
             display: block;
             color: #0066CC;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .contact-item span {
             color: #666;
             font-size: 14px;
+        }
+
+        .contact-footer {
+            color: #999;
+            font-size: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
         }
 
         /* Modals */
@@ -281,6 +421,8 @@
         .modal-content h2 {
             color: #0066CC;
             margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
         }
 
         .form-group {
@@ -292,14 +434,16 @@
             margin-bottom: 8px;
             color: #333;
             font-weight: 500;
+            font-size: 14px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 14px;
+            transition: border-color 0.3s ease;
         }
 
         .form-group input:focus {
@@ -312,64 +456,94 @@
             display: flex;
             gap: 10px;
             justify-content: flex-end;
+            margin-top: 30px;
         }
 
         .btn-cancel {
             background: #f0f0f0;
             color: #333;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
         }
 
         .btn-submit {
             background: #0066CC;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
         }
 
         .btn-submit:hover {
             background: #004499;
         }
 
-        /* Messages */
         .error-msg {
             color: #ff6b6b;
             margin-top: 10px;
             text-align: center;
+            font-size: 14px;
         }
 
         .success-msg {
             color: #51cf66;
             margin-top: 10px;
             text-align: center;
+            font-size: 14px;
+        }
+
+        /* Découvrir Button */
+        .discover-link {
+            color: #0066CC;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .discover-link:hover {
+            text-decoration: underline;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero {
-                padding: 30px;
-            }
-
             .hero h1 {
-                font-size: 24px;
+                font-size: 32px;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .buttons-section {
                 grid-template-columns: 1fr;
             }
 
-            .btn-card {
-                padding: 30px;
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -378,77 +552,87 @@
     <!-- Header -->
     <div class="header">
         <div class="header-left">
-            <div class="logo">🏫</div>
+            <div class="logo" id="logoContainer">
+                <img id="logoImg" class="logo-img" style="display:none;" alt="Logo">
+                <span id="logoText">🏫</span>
+            </div>
             <div class="school-name-header" id="schoolNameHeader">Chargement...</div>
         </div>
         <div class="header-right">
-            <button class="connexion-personnel" onclick="openPersonnelLogin()">Connexion Personnel</button>
+            <button class="connexion-btn" onclick="openPersonnelLogin()">
+                🔒 Connexion Personnel
+            </button>
             <button class="menu-btn" onclick="toggleMenu()">≡</button>
             <div class="menu-dropdown" id="menuDropdown">
-                <a href="#" onclick="openPersonnelLogin(); return false;">Connexion Personnel</a>
-                <a href="#" onclick="openAbout(); return false;">À propos</a>
-                <a href="#" onclick="openContact(); return false;">Contact</a>
+                <a href="#" onclick="openPersonnelLogin(); return false;">🔒 Connexion Personnel</a>
+                <a href="#" onclick="scrollToAbout(); return false;">À propos</a>
+                <a href="#" onclick="scrollToContact(); return false;">Contact</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1 id="heroTitle">Chargement...</h1>
+        <p id="heroDescription">Chargement...</p>
+    </div>
+
+    <!-- Statistiques -->
     <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <div class="hero-logo">🏫</div>
-            <h1 id="schoolNameHero">Chargement...</h1>
-            <p id="schoolDescription">Chargement...</p>
+        <div class="stats-section" id="statsSection">
+            <!-- Chargé dynamiquement -->
         </div>
 
-        <!-- Buttons Section -->
+        <!-- Boutons Principaux -->
         <div class="buttons-section">
-            <!-- Inscription de l'année -->
-            <div class="btn-card" onclick="openInscription()">
-                <div class="btn-card-icon">📝</div>
-                <h3>Inscription</h3>
-                <p style="color: #666; margin-bottom: 15px;">Nouvel étudiant ?</p>
-                <button class="btn-card-button">S'inscrire</button>
+            <div class="btn-card-large filled" onclick="openInscription()">
+                <div class="btn-card-large-icon">📝</div>
+                <h3>Inscription 2025-2026</h3>
+                <p>Nouvel étudiant ? Inscrivez-vous dès maintenant</p>
             </div>
-
-            <!-- Connexion Étudiant -->
-            <div class="btn-card" onclick="openStudentLogin()">
-                <div class="btn-card-icon">👨‍🎓</div>
-                <h3>Connexion Étudiant</h3>
-                <p style="color: #666; margin-bottom: 15px;">Ancien étudiant ?</p>
-                <button class="btn-card-button">Se connecter</button>
+            <div class="btn-card-large outlined" onclick="openStudentLogin()">
+                <div class="btn-card-large-icon">👨‍🎓</div>
+                <h3>Espace Étudiant</h3>
+                <p>Accédez à votre espace personnel</p>
             </div>
         </div>
 
-        <!-- Footer / Contact -->
-        <div class="footer">
-            <h3>📞 Contact de l'École</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <strong>📍 Adresse</strong>
-                    <span id="contactAddress">Chargement...</span>
-                </div>
-                <div class="contact-item">
-                    <strong>📱 Téléphone</strong>
-                    <span id="contactPhone">Chargement...</span>
-                </div>
-                <div class="contact-item">
-                    <strong>📧 Email</strong>
-                    <span id="contactEmail">Chargement...</span>
-                </div>
-                <div class="contact-item">
-                    <strong>🌐 Site Web</strong>
-                    <span id="contactWebsite">Chargement...</span>
-                </div>
+        <!-- Section À Propos -->
+        <div class="about-section" id="aboutSection" style="display:none;">
+            <div class="about-text">
+                <h2 id="aboutTitle">À propos</h2>
+                <p id="aboutDescription">Chargement...</p>
             </div>
-            <p style="color: #999; font-size: 12px;">© 2026 ERP Bonobo Système DRC - Tous droits réservés 🇨🇩</p>
+            <img id="aboutImage" class="about-image" src="" alt="À propos">
+        </div>
+
+        <!-- Section Services -->
+        <div class="services-section">
+            <div class="services-title">
+                <h2>🚀 NOS SERVICES</h2>
+                <p id="servicesSubtitle">Découvrez les outils qui révolutionnent la gestion scolaire</p>
+            </div>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Chargé dynamiquement -->
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="contactSection">
+            <h3>📞 Contact de l'École</h3>
+            <div class="contact-info" id="contactInfo">
+                <!-- Chargé dynamiquement -->
+            </div>
+            <div class="contact-footer">
+                © 2026 ERP Bonobo Système DRC - Tous droits réservés 🇨🇩
+            </div>
         </div>
     </div>
 
     <!-- Modal Connexion Personnel -->
     <div class="modal" id="modalPersonnel">
         <div class="modal-content">
-            <h2>Connexion Personnel</h2>
+            <h2>🔒 Connexion Personnel</h2>
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" id="personnelEmail" placeholder="votre@email.com">
@@ -468,7 +652,7 @@
     <!-- Modal Connexion Étudiant -->
     <div class="modal" id="modalStudent">
         <div class="modal-content">
-            <h2>Connexion Étudiant</h2>
+            <h2>👨‍🎓 Espace Étudiant</h2>
             <div class="form-group">
                 <label>Matricule</label>
                 <input type="text" id="studentMatricule" placeholder="MAT-2024-XXXXX">
@@ -484,21 +668,21 @@
     <!-- Modal Inscription -->
     <div class="modal" id="modalInscription">
         <div class="modal-content">
-            <h2>S'inscrire</h2>
+            <h2>📝 S'inscrire</h2>
             <div class="form-group">
-                <label>Nom</label>
+                <label>Nom *</label>
                 <input type="text" id="inscriptionNom" placeholder="Votre nom">
             </div>
             <div class="form-group">
-                <label>Prénom</label>
+                <label>Prénom *</label>
                 <input type="text" id="inscriptionPrenom" placeholder="Votre prénom">
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label>Email *</label>
                 <input type="email" id="inscriptionEmail" placeholder="votre@email.com">
             </div>
             <div class="form-group">
-                <label>Classe</label>
+                <label>Classe *</label>
                 <input type="text" id="inscriptionClasse" placeholder="Votre classe">
             </div>
             <div class="form-group">
@@ -517,26 +701,85 @@
     <script>
         // Charger les données au démarrage
         window.addEventListener('load', function() {
-            loadSchoolData();
+            loadAllData();
         });
 
-        // Charger les données de l'école
-        function loadSchoolData() {
+        // Charger toutes les données
+        function loadAllData() {
             google.script.run.withSuccessHandler(function(data) {
-                // Infos école
-                document.getElementById('schoolNameHeader').textContent = data.nom_ecole || 'ERP Bonobo';
-                document.getElementById('schoolNameHero').textContent = data.nom_ecole || 'ERP Bonobo';
-                document.getElementById('schoolDescription').textContent = data.description || 'Bienvenue sur notre plateforme de gestion scolaire';
+                // Header
+                const config = data.config || {};
+                document.getElementById('schoolNameHeader').textContent = config.nom_ecole || 'ERP Bonobo';
+                
+                // Logo
+                if (config.logo_url) {
+                    const logoImg = document.getElementById('logoImg');
+                    logoImg.src = config.logo_url;
+                    logoImg.style.display = 'block';
+                    document.getElementById('logoText').style.display = 'none';
+                }
 
-                // Infos contact
-                document.getElementById('contactAddress').textContent = data.adresse || 'Non disponible';
-                document.getElementById('contactPhone').textContent = data.telephone || 'Non disponible';
-                document.getElementById('contactEmail').textContent = data.email || 'Non disponible';
-                document.getElementById('contactWebsite').textContent = data.site_web || 'Non disponible';
-            }).getSchoolConfig();
+                // Hero
+                const hero = data.accueilHero || {};
+                document.getElementById('heroTitle').textContent = hero.titre_principal || 'Bienvenue';
+                document.getElementById('heroDescription').textContent = hero.description_hero || 'Découvrez notre plateforme';
+
+                // Statistiques
+                const stats = data.accueilStatistiques || [];
+                const statsHtml = stats.map(s => `
+                    <div class="stat-item">
+                        <div class="stat-value">${s.valeur}</div>
+                        <div class="stat-label">${s.titre}</div>
+                    </div>
+                `).join('');
+                document.getElementById('statsSection').innerHTML = statsHtml + '<a class="discover-link" onclick="smoothScroll(\'servicesSection\')">DÉCOUVRIR ↓</a>';
+
+                // À propos
+                if (hero.titre_apropos || hero.image_apropos) {
+                    document.getElementById('aboutSection').style.display = 'grid';
+                    document.getElementById('aboutTitle').textContent = hero.titre_apropos || 'À propos';
+                    document.getElementById('aboutDescription').textContent = hero.description_apropos || '';
+                    if (hero.image_apropos) {
+                        document.getElementById('aboutImage').src = hero.image_apropos;
+                    }
+                }
+
+                // Services
+                const services = data.accueilServices || [];
+                const servicesHtml = services.map(s => `
+                    <div class="service-card" style="border-left-color: ${s.couleur}">
+                        <div class="service-icon">${s.icone}</div>
+                        <h3>${s.titre}</h3>
+                        <p>${s.description}</p>
+                    </div>
+                `).join('');
+                document.getElementById('servicesGrid').innerHTML = servicesHtml;
+
+                // Contact
+                const contact = data.config || {};
+                const contactHtml = `
+                    <div class="contact-item">
+                        <strong>📍 Adresse</strong>
+                        <span>${contact.adresse || 'Non disponible'}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📱 Téléphone</strong>
+                        <span>${contact.telephone || 'Non disponible'}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📧 Email</strong>
+                        <span>${contact.email || 'Non disponible'}</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>🌐 Site Web</strong>
+                        <span>${contact.site_web || 'Non disponible'}</span>
+                    </div>
+                `;
+                document.getElementById('contactInfo').innerHTML = contactHtml;
+            }).getAllData();
         }
 
-        // Functions pour les modals
+        // Functions modales
         function openPersonnelLogin() {
             document.getElementById('modalPersonnel').classList.add('active');
             toggleMenu();
@@ -559,7 +802,6 @@
             document.getElementById('menuDropdown').classList.toggle('active');
         }
 
-        // Fermer le menu au clic en dehors
         document.addEventListener('click', function(event) {
             const menu = document.getElementById('menuDropdown');
             const menuBtn = document.querySelector('.menu-btn');
@@ -648,6 +890,21 @@
             document.getElementById('errorStudent').textContent = '';
             document.getElementById('errorInscription').textContent = '';
             document.getElementById('successInscription').textContent = '';
+        }
+
+        // Scroll functions
+        function scrollToAbout() {
+            document.getElementById('aboutSection').scrollIntoView({ behavior: 'smooth' });
+            toggleMenu();
+        }
+
+        function scrollToContact() {
+            document.getElementById('contactSection').scrollIntoView({ behavior: 'smooth' });
+            toggleMenu();
+        }
+
+        function smoothScroll(elementId) {
+            document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
