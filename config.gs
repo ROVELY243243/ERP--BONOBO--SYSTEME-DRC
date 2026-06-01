@@ -14,7 +14,10 @@ function initializeSpreadsheet() {
         'Professeurs',
         'Étudiants',
         'Contact',
-        'Inscription_En_Attente'
+        'Inscription_En_Attente',
+        'Accueil_Hero',
+        'Accueil_Statistiques',
+        'Accueil_Services'
     ];
 
     // Créer les onglets s'ils n'existent pas
@@ -36,6 +39,9 @@ function initializeHeaders() {
     initializeEtudiantsHeaders();
     initializeContactHeaders();
     initializeInscriptionHeaders();
+    initializeAccueilHeroHeaders();
+    initializeAccueilStatistiquesHeaders();
+    initializeAccueilServicesHeaders();
 }
 
 // Initialiser les en-têtes de Config
@@ -43,10 +49,8 @@ function initializeConfigHeaders() {
     const sheet = getSheetByName('Config');
     if (!sheet) return;
 
-    // Vérifier si les en-têtes existent
     if (sheet.getLastRow() === 0) {
         sheet.appendRow(['Clé', 'Valeur']);
-        // Formater les en-têtes
         const headerRange = sheet.getRange(1, 1, 1, 2);
         headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
     }
@@ -57,10 +61,8 @@ function initializeAdminsHeaders() {
     const sheet = getSheetByName('Admins');
     if (!sheet) return;
 
-    // Vérifier si les en-têtes existent
     if (sheet.getLastRow() === 0) {
         sheet.appendRow(['Nom', 'Email', 'Mot de passe', 'Rôle', 'Date d\'ajout']);
-        // Formater les en-têtes
         const headerRange = sheet.getRange(1, 1, 1, 5);
         headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
     }
@@ -71,10 +73,8 @@ function initializeProfesseursHeaders() {
     const sheet = getSheetByName('Professeurs');
     if (!sheet) return;
 
-    // Vérifier si les en-têtes existent
     if (sheet.getLastRow() === 0) {
         sheet.appendRow(['Nom', 'Prénom', 'Email', 'Mot de passe', 'Classe', 'Matière', 'Téléphone', 'Date d\'ajout']);
-        // Formater les en-têtes
         const headerRange = sheet.getRange(1, 1, 1, 8);
         headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
     }
@@ -85,10 +85,8 @@ function initializeEtudiantsHeaders() {
     const sheet = getSheetByName('Étudiants');
     if (!sheet) return;
 
-    // Vérifier si les en-têtes existent
     if (sheet.getLastRow() === 0) {
         sheet.appendRow(['Matricule', 'Nom', 'Prénom', 'Email', 'Classe', 'Téléphone', 'Statut', 'Date d\'inscription']);
-        // Formater les en-têtes
         const headerRange = sheet.getRange(1, 1, 1, 8);
         headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
     }
@@ -99,10 +97,8 @@ function initializeContactHeaders() {
     const sheet = getSheetByName('Contact');
     if (!sheet) return;
 
-    // Vérifier si les en-têtes existent
     if (sheet.getLastRow() === 0) {
         sheet.appendRow(['Clé', 'Valeur']);
-        // Formater les en-têtes
         const headerRange = sheet.getRange(1, 1, 1, 2);
         headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
     }
@@ -113,11 +109,45 @@ function initializeInscriptionHeaders() {
     const sheet = getSheetByName('Inscription_En_Attente');
     if (!sheet) return;
 
-    // Vérifier si les en-têtes existent
     if (sheet.getLastRow() === 0) {
         sheet.appendRow(['Nom', 'Prénom', 'Email', 'Classe', 'Téléphone', 'Matricule Temporaire', 'Date d\'inscription', 'Statut']);
-        // Formater les en-têtes
         const headerRange = sheet.getRange(1, 1, 1, 8);
+        headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
+    }
+}
+
+// Initialiser les en-têtes d'Accueil Hero
+function initializeAccueilHeroHeaders() {
+    const sheet = getSheetByName('Accueil_Hero');
+    if (!sheet) return;
+
+    if (sheet.getLastRow() === 0) {
+        sheet.appendRow(['Clé', 'Valeur']);
+        const headerRange = sheet.getRange(1, 1, 1, 2);
+        headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
+    }
+}
+
+// Initialiser les en-têtes d'Accueil Statistiques
+function initializeAccueilStatistiquesHeaders() {
+    const sheet = getSheetByName('Accueil_Statistiques');
+    if (!sheet) return;
+
+    if (sheet.getLastRow() === 0) {
+        sheet.appendRow(['Titre', 'Valeur']);
+        const headerRange = sheet.getRange(1, 1, 1, 2);
+        headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
+    }
+}
+
+// Initialiser les en-têtes d'Accueil Services
+function initializeAccueilServicesHeaders() {
+    const sheet = getSheetByName('Accueil_Services');
+    if (!sheet) return;
+
+    if (sheet.getLastRow() === 0) {
+        sheet.appendRow(['Titre', 'Description', 'Icône', 'Couleur', 'Ordre']);
+        const headerRange = sheet.getRange(1, 1, 1, 5);
         headerRange.setBackground('#0066CC').setFontColor('white').setFontWeight('bold');
     }
 }
@@ -143,7 +173,10 @@ function getAllData() {
         admins: getAdminsData(),
         profs: getProfesseursData(),
         students: getEtudiantsData(),
-        pending: getPendingRegistrations()
+        pending: getPendingRegistrations(),
+        accueilHero: getAccueilHeroData(),
+        accueilStatistiques: getAccueilStatistiquesData(),
+        accueilServices: getAccueilServicesData()
     };
 }
 
@@ -173,7 +206,7 @@ function getAdminsData() {
     const admins = [];
 
     for (let i = 1; i < data.length; i++) {
-        if (data[i][0] && data[i][1]) {  // Vérifier que Nom et Email existent
+        if (data[i][0] && data[i][1]) {
             admins.push({
                 nom: data[i][0],
                 email: data[i][1],
@@ -195,7 +228,7 @@ function getProfesseursData() {
     const profs = [];
 
     for (let i = 1; i < data.length; i++) {
-        if (data[i][0] && data[i][2]) {  // Vérifier que Nom et Email existent
+        if (data[i][0] && data[i][2]) {
             profs.push({
                 nom: data[i][0],
                 prenom: data[i][1] || '',
@@ -220,7 +253,7 @@ function getEtudiantsData() {
     const students = [];
 
     for (let i = 1; i < data.length; i++) {
-        if (data[i][0] && data[i][1]) {  // Vérifier que Matricule et Nom existent
+        if (data[i][0] && data[i][1]) {
             students.push({
                 matricule: data[i][0],
                 nom: data[i][1],
@@ -245,7 +278,7 @@ function getPendingRegistrations() {
     const pending = [];
 
     for (let i = 1; i < data.length; i++) {
-        if (data[i][0] && data[i][1]) {  // Vérifier que Nom et Prénom existent
+        if (data[i][0] && data[i][1]) {
             pending.push({
                 nom: data[i][0],
                 prenom: data[i][1],
@@ -260,6 +293,68 @@ function getPendingRegistrations() {
     }
 
     return pending;
+}
+
+// Obtenir les données du Hero de l'accueil
+function getAccueilHeroData() {
+    const sheet = getSheetByName('Accueil_Hero');
+    if (!sheet || sheet.getLastRow() < 2) return {};
+
+    const data = sheet.getDataRange().getValues();
+    const hero = {};
+
+    for (let i = 1; i < data.length; i++) {
+        if (data[i][0]) {
+            hero[data[i][0]] = data[i][1];
+        }
+    }
+
+    return hero;
+}
+
+// Obtenir les statistiques de l'accueil
+function getAccueilStatistiquesData() {
+    const sheet = getSheetByName('Accueil_Statistiques');
+    if (!sheet || sheet.getLastRow() < 2) return [];
+
+    const data = sheet.getDataRange().getValues();
+    const stats = [];
+
+    for (let i = 1; i < data.length; i++) {
+        if (data[i][0] && data[i][1]) {
+            stats.push({
+                titre: data[i][0],
+                valeur: data[i][1]
+            });
+        }
+    }
+
+    return stats;
+}
+
+// Obtenir les services de l'accueil
+function getAccueilServicesData() {
+    const sheet = getSheetByName('Accueil_Services');
+    if (!sheet || sheet.getLastRow() < 2) return [];
+
+    const data = sheet.getDataRange().getValues();
+    const services = [];
+
+    for (let i = 1; i < data.length; i++) {
+        if (data[i][0]) {
+            services.push({
+                titre: data[i][0],
+                description: data[i][1] || '',
+                icone: data[i][2] || '📋',
+                couleur: data[i][3] || '#0066CC',
+                ordre: data[i][4] || i
+            });
+        }
+    }
+
+    // Trier par ordre
+    services.sort((a, b) => a.ordre - b.ordre);
+    return services;
 }
 
 // Initialiser automatiquement au déploiement
